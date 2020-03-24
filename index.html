@@ -1,16 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
 <head>
-	<link rel="shortcut icon" href="/miaomiao/favicon.ico" type="image/x-icon" />
-	<script src="jquery-3.3.1.min.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css" />
+	<!-- Font Awesome -->
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="./Ionicons/css/ionicons.min.css" />
+	<link rel="stylesheet" href="./dist/css/AdminLTE.min.css" />
+	<!-- AdminLTE Skins. Choose a skin from the css/skins
+		 folder instead of downloading all of them to reduce the load. -->
+	<link rel="stylesheet" href="./dist/css/skins/_all-skins.min.css" />
 
 	<style>
 
-		body{
+		body {
 			padding: 10px;
 		}
+
 		table {
-			border: 1px solid red;
 		}
 
 		td {
@@ -21,38 +29,70 @@
 			margin-right: 3px;
 		}
 
-		.mix_td{
-			max-width: 300px;
-			padding-bottom: 5px;
+		.mix_td {
+			max-width: 250px;
+			padding-bottom: 15px !important;
+			
 		}
-		.fix_td{
+
+		.fix_td {
 			max-width: 100px;
 		}
+
 		span:nth-child(2n+1) {
 			font-weight: 600;
 		}
 
 		.tr_4_24, .tr_3_18, .tr_2_12, .tr_1_6 {
-			color: red;
+			background: #a8f3ae;
+		}
+
+		.woman_percent{
+			color:white;font-size:10px; width:30px; background: #3c8dbc; height: 40px;display:inline-block;
+			position:relative;
+			vertical-align: bottom;
+			margin-right: 3px;
+			text-align: center;
+		}
+		.woman_percent span{
+			position: absolute;
+			bottom: -16px;
+			left: 10px;
+			color: #1342ad;
+		}
+
+		.box-title{
+			font-size: 22px !important;
+			font-weight: 600;
 		}
 	</style>
 </head>  
 <body>
-	- 充3000送1000，75折，22.5/小时 <br />
-	- 球 50 一桶，4.17/个
+	<h3>充2000送1000，67折，20.1/小时</h3>
+	<h3>球 50 一桶，4.17/个</h3><br/>
 	<div class="main-content">
 
 	</div>
+	<!-- Bootstrap 3.3.7 -->
+	<script src="./jquery/dist/jquery.min.js"></script>
+	<script src="./bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- Slimscroll -->
+	<script src="./jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="./fastclick/lib/fastclick.js"></script>
+	<!-- AdminLTE App -->
+	<script src="./dist/js/adminlte.min.js"></script>
+
 
 	<script>
 		$(function () {
 			var array = [2, 3, 4, 4];
 			var per_bool = 50;
-			var per_hour = 22.5;
+			var per_hour = 20.1;
 			var hours = 2.5;
 			for (var i = 4; i > 0; i--) {
-				$('.main-content').append('<p>******* ' + i + '场地 2.5小时 = ' + hours * i * per_hour + '</p>');
-				$('.main-content').append('<table id="num' + i + '"><tr><td>人数</td><td>固定' + i + '桶球</td><td class="fix_td">18元/人(最多用球)</td><td>男18女15(女--最多用球)</td><td class="fix_td">20元/人(最多用球)</td><td>男20女16(最多用球)</td></tr></table>');
+				$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 2.5小时 = ' + hours * i * per_hour + '</h3></div></div>');
+				$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女16(女生数--最多用球)</th></tr></table></div>');
 				for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
 					var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
 					var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
@@ -65,12 +105,18 @@
 					}
 					for (var w = woman_num; w > 0; w--) {
 						var temp = (mon_18 - w * 12 * 3 / per_bool).toFixed(1);
-						$('#m15_' + i + '_' + n).append('<span class="small_text">(' + w + '/' + temp + ')</span>');
+						var height = temp;
+						if (height < 14)
+							height = 14;
+						$('#m15_' + i + '_' + n).append('<div class="woman_percent" style="height:' + height + 'px">' + temp + '<span>' + w + '</span></div>');
 					}
 
 					for (var www = woman_num; www > 0; www--) {
-						var temp = (mon_20 - www * 12 * 3 / per_bool).toFixed(1);
-						$('#m16_' + i + '_' + n).append('<span class="small_text">(' + www + '/' + temp + ')</span>');
+						var temp = (mon_20 - www * 12 * 3 / per_bool).toFixed(0);
+						var height = temp;
+						if (height < 14)
+							height = 14;
+						$('#m16_' + i + '_' + n).append('<div class="woman_percent" style="height:' + height + 'px">' + temp + '<span>' + www + '</span></div>');
 					}
 				}
 			}
