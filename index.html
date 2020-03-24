@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="jquery-3.3.1.min.js"></script>
-    <title>Demo £º Textarea ÔªËØµÄ¹â±êÎ»ÖÃ</title>
+    <title>Demo ï¼š Textarea å…ƒç´ çš„å…‰æ ‡ä½ç½®</title>
     
     <style>
         table{
@@ -28,8 +28,8 @@
     </style>
 </head>  
 <body>
-	- ³ä3000ËÍ1000£¬75ÕÛ£¬22.5/Ğ¡Ê± <br />
-	- Çò 50 Ò»Í°£¬4.17/¸ö
+	- å……3000é€1000ï¼Œ75æŠ˜ï¼Œ22.5/å°æ—¶ <br />
+	- çƒ 50 ä¸€æ¡¶ï¼Œ4.17/ä¸ª
 	<div class="main-content">
 
 	</div>
@@ -41,13 +41,13 @@
 			var per_hour = 22.5;
 			var hours = 2.5;
 			for (var i = 4; i > 0; i--) {
-				$('.main-content').append('<p>++ ' + i + '³¡µØ 2.5Ğ¡Ê± === ' + hours * i * per_hour + '</p>');
-				$('.main-content').append('<table id="num' + i + '"><tr><td>ÈËÊı</td><td>¹Ì¶¨' + i + 'Í°ÇòÊÕ·Ñ</td><td>¹Ì¶¨18Ôª£¨×î¶àÓÃÇò£©</td><td>ÄĞ18Å®15£¨Å®--×î¶àÓÃÇò£©</td><td>¹Ì¶¨20Ôª£¨×î¶àÓÃÇò£©</td><td>ÄĞ20Å®16£¨×î¶àÓÃÇò£©</td></tr></table>');
+				$('.main-content').append('<p>++ ' + i + 'åœºåœ° 2.5å°æ—¶ === ' + hours * i * per_hour + '</p>');
+				$('.main-content').append('<table id="num' + i + '"><tr><td>äººæ•°</td><td>å›ºå®š' + i + 'æ¡¶çƒæ”¶è´¹</td><td>å›ºå®š18å…ƒï¼ˆæœ€å¤šç”¨çƒï¼‰</td><td>ç”·18å¥³15ï¼ˆå¥³--æœ€å¤šç”¨çƒï¼‰</td><td>å›ºå®š20å…ƒï¼ˆæœ€å¤šç”¨çƒï¼‰</td><td>ç”·20å¥³16ï¼ˆæœ€å¤šç”¨çƒï¼‰</td></tr></table>');
 				for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
 					var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(2);
 					var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(2);
 					var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(2);
-					$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + 'ÈË</td><td>' + mon_1 + '/ÈË</td><td>' + mon_18 + ' Çò</td><td id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' Çò</td><td id="m16_' + i + '_' + n + '"></td></tr>');
+					$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + 'äºº</td><td>' + mon_1 + '/äºº</td><td>' + mon_18 + ' çƒ</td><td id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' çƒ</td><td id="m16_' + i + '_' + n + '"></td></tr>');
 
 					var woman_num = Math.floor(n / 2);
 					if (woman_num > 8) {
