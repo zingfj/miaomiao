@@ -1,29 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
 <head>
-    <script src="jquery-3.3.1.min.js"></script>
-    
-    <style>
-        table{
-            border: 1px solid red;
-        }
-        td{
-            padding: 0 10px 0 0px;
-        }
+	<link rel="shortcut icon" href="/ds.ico" type="image/x-icon" />
+	<script src="jquery-3.3.1.min.js"></script>
 
-        .small_text{
-            font-size: 10px;
-            margin-right:3px;
-        }
+	<style>
+		table {
+			border: 1px solid red;
+		}
 
-        span:nth-child(2n+1){
-            font-weight:600;
-        }
+		td {
+			padding: 0 10px 0 0px;
+		}
 
-        .tr_4_24, .tr_3_18, .tr_2_12, .tr_1_6{
-            color: red;
-        }
-    </style>
+		.small_text {
+			font-size: 10px;
+			margin-right: 3px;
+		}
+
+		span:nth-child(2n+1) {
+			font-weight: 600;
+		}
+
+		.tr_4_24, .tr_3_18, .tr_2_12, .tr_1_6 {
+			color: red;
+		}
+	</style>
 </head>  
 <body>
 	- 充3000送1000，75折，22.5/小时 <br />
@@ -43,8 +45,8 @@
 				$('.main-content').append('<table id="num' + i + '"><tr><td>人数</td><td>固定' + i + '桶球收费</td><td>固定18元（最多用球）</td><td>男18女15（女--最多用球）</td><td>固定20元（最多用球）</td><td>男20女16（最多用球）</td></tr></table>');
 				for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
 					var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(2);
-					var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(2);
-					var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(2);
+					var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
+					var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
 					$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + '人</td><td>' + mon_1 + '/人</td><td>' + mon_18 + ' 球</td><td id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' 球</td><td id="m16_' + i + '_' + n + '"></td></tr>');
 
 					var woman_num = Math.floor(n / 2);
@@ -52,12 +54,12 @@
 						woman_num = 8;
 					}
 					for (var w = woman_num; w > 0; w--) {
-						var temp = (mon_18 - w * 12 * 3 / per_bool).toFixed(2);
+						var temp = (mon_18 - w * 12 * 3 / per_bool).toFixed(1);
 						$('#m15_' + i + '_' + n).append('<span class="small_text">(' + w + '/' + temp + ')</span>');
 					}
 
 					for (var www = woman_num; www > 0; www--) {
-						var temp = (mon_20 - www * 12 * 3 / per_bool).toFixed(2);
+						var temp = (mon_20 - www * 12 * 3 / per_bool).toFixed(1);
 						$('#m16_' + i + '_' + n).append('<span class="small_text">(' + www + '/' + temp + ')</span>');
 					}
 				}
