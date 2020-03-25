@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
-<html xmlns="http://www.w3.org/1999/xhtml">  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
@@ -14,6 +14,7 @@
 
 		body {
 			padding: 10px;
+			background: #eee;
 		}
 
 		table {
@@ -30,7 +31,6 @@
 		.mix_td {
 			max-width: 250px;
 			padding-bottom: 15px !important;
-			
 		}
 
 		.fix_td {
@@ -45,81 +45,149 @@
 			background: #a8f3ae;
 		}
 
-		.woman_percent{
-			color:white;font-size:10px; width:30px; background: #3c8dbc; height: 40px;display:inline-block;
-			position:relative;
+		.woman_percent {
+			color: white;
+			font-size: 10px;
+			width: 30px;
+			background: #3c8dbc;
+			height: 40px;
+			display: inline-block;
+			position: relative;
 			vertical-align: bottom;
 			margin-right: 3px;
 			text-align: center;
 		}
-		.woman_percent span{
-			position: absolute;
-			bottom: -16px;
-			left: 10px;
-			color: #1342ad;
-		}
 
-		.box-title{
+			.woman_percent span {
+				position: absolute;
+				bottom: -16px;
+				left: 10px;
+				color: #1342ad;
+			}
+
+		.box-title {
 			font-size: 22px !important;
 			font-weight: 600;
 		}
+
+		.form-group{
+			width:250px;
+			float: left;
+		}
 	</style>
-</head>  
+</head>
 <body>
-	<h3>充2000送1000，67折，20.1/小时</h3>
-	<h3>球 50 一桶，4.17/个</h3><br/>
+	<div class="box box-info" style="padding:0 20px 0 5px;">
+		<div class="box-header with-border">
+			<h3 class="box-title">初始数据</h3>
+		</div>
+		<form class="form-horizontal">
+			<div class="box-body">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-5 control-label">场地:</label>
+					<div class="col-sm-6 input-group">
+						<input id="inputEmail3" type="text" class="form-control" value="20.1" />
+						<span class="input-group-addon">/ 小时</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword3" class="col-sm-5 control-label">球:</label>
+					<div class="col-sm-6 input-group">
+						<input id="inputPassword3" type="text" class="form-control" value="50" />
+						<span class="input-group-addon">/ 桶</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="total_hours" class="col-sm-5 control-label">时长:</label>
+					<div class="col-sm-6 input-group">
+						<input id="total_hours" type="text" class="form-control" value="2.5" />
+						<span class="input-group-addon">小时</span>
+					</div>
+				</div>
+				<div style="float:left;margin-left:20px;">
+					<a id="init_btn" class="btn btn-success pull-right" style="padding:5px 30px 5px 30px;">确认</a>
+				</div>
+			</div>
+		</form>
+	</div>
 	<div class="main-content">
 
 	</div>
-	<!-- Bootstrap 3.3.7 -->
 	<script src="./jquery/dist/jquery.min.js"></script>
 	<script src="./bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- Slimscroll -->
 	<script src="./jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<!-- FastClick -->
 	<script src="./fastclick/lib/fastclick.js"></script>
-	<!-- AdminLTE App -->
 	<script src="./dist/js/adminlte.min.js"></script>
 
 
 	<script>
 		$(function () {
+
 			var array = [2, 3, 4, 4];
 			var per_bool = 50;
 			var per_hour = 20.1;
 			var hours = 2.5;
-			for (var i = 4; i > 0; i--) {
-				$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 2.5小时 = ' + hours * i * per_hour + '</h3></div></div>');
-				$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女16(女生数--最多用球)</th></tr></table></div>');
-				for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
-					var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
-					var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
-					var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
-					$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + '</td><td>' + mon_1 + '元/人</td><td>' + mon_18 + ' 球</td><td class="mix_td" id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' 球</td><td class="mix_td" id="m16_' + i + '_' + n + '"></td></tr>');
+				init();
 
-					var woman_num = Math.floor(n / 2);
-					if (woman_num > 8) {
-						woman_num = 8;
-					}
-					for (var w = woman_num; w > 0; w--) {
-						var temp = (mon_18 - w * 12 * 3 / per_bool).toFixed(1);
-						var height = temp;
-						if (height < 14)
-							height = 14;
-						$('#m15_' + i + '_' + n).append('<div class="woman_percent" style="height:' + height + 'px">' + temp + '<span>' + w + '</span></div>');
-					}
+			$('#init_btn').click(function () {
+				per_hour = $('#inputEmail3').val();
+				per_bool = $('#inputPassword3').val();
+				hours = $('#total_hours').val();
 
-					for (var www = woman_num; www > 0; www--) {
-						var temp = (mon_20 - www * 12 * 3 / per_bool).toFixed(0);
-						var height = temp;
-						if (height < 14)
-							height = 14;
-						$('#m16_' + i + '_' + n).append('<div class="woman_percent" style="height:' + height + 'px">' + temp + '<span>' + www + '</span></div>');
+				if (per_hour === '') {
+					per_hour = 20.1;
+					$('#inputEmail3').val('20.1');
+				}
+
+				if (per_bool === '') {
+					per_bool = 50;
+					$('#inputPassword3').val('50');
+				}
+
+				if (hours === '') {
+					hours = 2.5;
+					$('#total_hours').val('2.5');
+				}
+
+				init();
+			});
+
+
+			function init() {
+				$('.main-content').html('');
+				for (var i = 4; i > 0; i--) {
+					$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 2.5小时 = ' + (hours * i * per_hour).toFixed(1) + '</h3></div></div>');
+					$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女16(女生数--最多用球)</th></tr></table></div>');
+					for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
+						var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
+						var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
+						var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
+						$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + '</td><td>' + mon_1 + '元/人</td><td>' + mon_18 + ' 球</td><td class="mix_td" id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' 球</td><td class="mix_td" id="m16_' + i + '_' + n + '"></td></tr>');
+
+						var woman_num = Math.floor(n / 2);
+						if (woman_num > 8) {
+							woman_num = 8;
+						}
+						for (var w = woman_num; w > 0; w--) {
+							var temp = (mon_18 - w * 12 * 3 / per_bool).toFixed(1);
+							var height = temp;
+							if (height < 14)
+								height = 14;
+							$('#m15_' + i + '_' + n).append('<div class="woman_percent" style="height:' + height + 'px">' + temp + '<span>' + w + '</span></div>');
+						}
+
+						for (var www = woman_num; www > 0; www--) {
+							var temp = (mon_20 - www * 12 * 3 / per_bool).toFixed(0);
+							var height = temp;
+							if (height < 14)
+								height = 14;
+							$('#m16_' + i + '_' + n).append('<div class="woman_percent" style="height:' + height + 'px">' + temp + '<span>' + www + '</span></div>');
+						}
 					}
 				}
 			}
 		})
 
 	</script>
-</body>  
+</body>
 </html>  
