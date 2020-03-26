@@ -30,7 +30,6 @@
 
 		.mix_td {
 			max-width: 250px;
-			padding-bottom: 15px !important;
 		}
 
 		.fix_td {
@@ -56,6 +55,7 @@
 			vertical-align: bottom;
 			margin-right: 3px;
 			text-align: center;
+			margin-bottom: 12px;
 		}
 
 			.woman_percent span {
@@ -70,23 +70,27 @@
 			font-weight: 600;
 		}
 
-		.form-group{
-			width:250px;
+		.form-group {
+			width: 250px;
 			float: left;
+		}
+
+		.box-body input{
+			font-size: 20px;
 		}
 	</style>
 </head>
 <body>
 	<div class="box box-info" style="padding:0 20px 0 5px;">
 		<div class="box-header with-border">
-			<h3 class="box-title">初始数据</h3>
+			<h3 class="box-title">初始数据<span id="time_span"></span></h3>
 		</div>
 		<form class="form-horizontal">
 			<div class="box-body">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-5 control-label">场地:</label>
 					<div class="col-sm-6 input-group">
-						<input id="inputEmail3" type="text" class="form-control" value="20.1" />
+						<input id="inputEmail3" type="text" class="form-control" value="22.5" />
 						<span class="input-group-addon">/ 小时</span>
 					</div>
 				</div>
@@ -116,6 +120,7 @@
 	<script src="./jquery/dist/jquery.min.js"></script>
 	<script src="./bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="./jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
 	<script src="./fastclick/lib/fastclick.js"></script>
 	<script src="./dist/js/adminlte.min.js"></script>
 
@@ -125,9 +130,9 @@
 
 			var array = [2, 3, 4, 4];
 			var per_bool = 50;
-			var per_hour = 20.1;
+			var per_hour = 22.5;
 			var hours = 2.5;
-				init();
+			init();
 
 			$('#init_btn').click(function () {
 				per_hour = $('#inputEmail3').val();
@@ -135,7 +140,7 @@
 				hours = $('#total_hours').val();
 
 				if (per_hour === '') {
-					per_hour = 20.1;
+					per_hour = 22.5;
 					$('#inputEmail3').val('20.1');
 				}
 
@@ -156,7 +161,7 @@
 			function init() {
 				$('.main-content').html('');
 				for (var i = 4; i > 0; i--) {
-					$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 2.5小时 = ' + (hours * i * per_hour).toFixed(1) + '</h3></div></div>');
+					$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 ' + hours + '小时 = ' + (hours * i * per_hour).toFixed(1) + '</h3></div></div>');
 					$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女16(女生数--最多用球)</th></tr></table></div>');
 					for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
 						var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
@@ -164,9 +169,9 @@
 						var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
 						$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + '</td><td>' + mon_1 + '元/人</td><td>' + mon_18 + ' 球</td><td class="mix_td" id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' 球</td><td class="mix_td" id="m16_' + i + '_' + n + '"></td></tr>');
 
-						var woman_num = Math.floor(n / 2);
-						if (woman_num > 8) {
-							woman_num = 8;
+						var woman_num = Math.floor(n / 2) + 2;
+						if (woman_num > 10) {
+							woman_num = 10;
 						}
 						for (var w = woman_num; w > 0; w--) {
 							var temp = (mon_18 - w * 12 * 3 / per_bool).toFixed(1);
@@ -185,9 +190,10 @@
 						}
 					}
 				}
+				var day = new Date();
+				$('#time_span').html(day);
 			}
 		})
-
 	</script>
 </body>
 </html>  
