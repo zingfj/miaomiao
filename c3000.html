@@ -48,13 +48,14 @@
 			color: white;
 			font-size: 10px;
 			width: 30px;
-			background: #3c8dbc;
 			display: inline-block;
 			position: relative;
 			vertical-align: bottom;
 			margin-right: 5px;
 			text-align: center;
 			margin-bottom: 12px;
+			background: #3c8dbc;
+			cursor: pointer;
 		}
 			.ball_money_percent span {
 				position: absolute;
@@ -62,6 +63,10 @@
 				left: 4px;
 				color: #1342ad;
 			}
+
+		.ball_money_percent.red {
+			background: red;
+		}
 
 		.box-title {
 			font-size: 22px !important;
@@ -82,8 +87,8 @@
 			vertical-align: middle !important;
 		}
 
-		.split_line{
-			border-bottom:1px solid #333;
+		.split_line {
+			border-bottom: 1px solid #333;
 			width: 60px;
 			margin: 0 auto;
 		}
@@ -117,7 +122,7 @@
 						<span class="input-group-addon">小时</span>
 					</div>
 				</div>
-				<div style="float:left;margin-left:20px;">
+				<div style="float: left; margin-left: 20px;">
 					<a href="https://zingfj.github.io/miaomiao/c2000.html" class="pull-right" style="margin-left: 20px; font-size:24px; font-weight:700">跳转表格一</a>
 					<a id="init_btn" class="btn btn-success pull-right" style="padding:5px 30px 5px 30px;">确认</a>
 				</div>
@@ -200,6 +205,13 @@
 				var day = new Date();
 				$('#time_span').html(day);
 			}
+
+			$(document).delegate('.ball_money_percent', 'click', function () {
+				if ($(this).hasClass('red'))
+					$(this).removeClass('red');
+				else
+					$(this).addClass('red');
+			});
 		})
 	</script>
 </body>
