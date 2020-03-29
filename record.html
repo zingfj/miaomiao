@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css" />
+	<!-- Font Awesome -->
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="./Ionicons/css/ionicons.min.css" />
+	<link rel="stylesheet" href="./dist/css/AdminLTE.min.css" />
+	<link rel="stylesheet" href="./dist/css/skins/_all-skins.min.css" />
+
+	<style>
+
+		body {
+			padding: 10px;
+			background: #eee;
+		}
+
+		td {
+			padding: 0 10px 0 0px;
+		}
+
+
+		th, td{
+			text-align: center;
+			vertical-align: middle !important;
+			font-size: 18px;
+		}
+
+		.split_line {
+			border-bottom: 1px solid #333;
+			width: 60px;
+			margin: 0 auto;
+		}
+
+		.outcome{
+			color: red;
+			font-weight: 600;
+		}
+		.income{
+			font-weight: 700;
+			color: #1dc51a;
+		}
+		.record_table tr:nth-child(2n+1){
+			background: #f4f8fb;
+		}
+		.names{
+			font-size: 14px;
+		}
+		.small_text{
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box-info" style="padding:0 20px 0 5px;background:#a8e09d">
+		<div class="box-header with-border">
+			<h3 class="box-title">消费记录</h3><span id="time_span"></span>
+		</div>
+	</div>
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">Responsive Hover Table</h3>
+
+			<div class="box-tools">
+				<div class="input-group input-group-sm" style="width: 150px;">
+					<input type="text" name="table_search" class="form-control pull-right" placeholder="Search" />
+
+					<div class="input-group-btn">
+						<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+			<table class="table table-hover record_table">
+				<tr>
+					<th>日期</th>
+					<th>人数</th>
+					<th>名单</th>
+					<th>收取</th>
+					<th>耗球(个)</th>
+					<th>场地</th>
+					<th>卡余</th>
+					<th>其它</th>
+				</tr>
+			</table>
+		</div>
+		<!-- /.box-body -->
+	</div>
+	<div class="main-content">
+
+	</div>
+	<script src="./jquery/dist/jquery.min.js"></script>
+	<script src="./bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+	<script src="./fastclick/lib/fastclick.js"></script>
+	<script src="./dist/js/adminlte.min.js"></script>
+
+
+	<script>
+		$(function () {
+			var card_total = 4000.0
+			var items = [
+				{
+					date: '2020-12-09',
+					others: '<span class="outcome">-500</span>（10桶球）',
+					type: 'label'
+				},
+				{
+					date: '2020-12-09',
+					num: 13,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					area: 112.5,
+					ball: 16,
+					others: '<span class="small_text">2*2.5h + 1*2.0</span>',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					num: 13,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					num: 13,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					num: 13,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					others: '<span class="outcome">-500</span>（10桶球）',
+					type: 'label'
+				}
+			];
+
+			var expend_area = 0;
+			var income_total = 0;
+			for (var i = 0; i < items.length; i++) {
+
+				var m = items[i];
+
+				if (m.type === 'data') {
+					expend_area += m.area;
+					income_total += m.income;
+					$('.record_table').append('<tr><td>' + m.date + '</td><td>' + m.num + '</td><td class="names">' + m.names + '</td><td class="income">' + m.income + '</td><td>' + m.ball
+						+ '</td><td>' + m.area + '</td><td>' + (card_total - expend_area) + '</td><td>' + m.others + '</td></tr>');
+				}
+				else {
+					$('.record_table').append('<tr><td>' + m.date + '</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>' + (card_total - expend_area) + '</td><td>' + m.others + '</td></tr>');
+				}
+			}
+
+			$('.record_table').append('<tr><th>总计</th><th>-----</th><th>-----</th><th class="income">+' + income_total + '</th><th>-----</th><th>-----</th><th>-----</th><th class="outcome">-1250</th></tr>');
+		})
+	</script>
+</body>
+</html>  
