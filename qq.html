@@ -199,7 +199,7 @@
 							if (i === 1)
 								height += 14;
 						
-							$('#ball_' + i + '_' + n).append('<div class="ball_money_percent" style="height:'+ height + 'px">' + ball + '<span>' + money + '</span></div>');
+							$('#ball_' + i + '_' + n).append('<div count="0" class="ball_money_percent item_' +i + '_'+n + '_' + ball +'" style="height:'+ height + 'px">' + ball + '<span>' + money + '</span></div>');
 						}
 					}
 				}
@@ -213,6 +213,179 @@
 				else
 					$(this).addClass('red');
 			});
+
+
+
+
+
+			
+			var items = [
+				{
+					date: '2020-12-09',
+					others: '<span class="outcome">-500</span>（10桶球）',
+					type: 'label'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 13,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,		// 开场数
+					area: 112.5,	// 场地总费用
+					ball: 16,
+					others: '<span class="small_text">2*2.5h + 1*2.0</span>',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 18,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 3,
+					area: 112.5,
+					ball: 25,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 7,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 1,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 13,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 14,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 12,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 12,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 12,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 11,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 11,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 11,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					peopleNum: 11,
+					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
+					income: 58,
+					areaNum: 2,
+					area: 112.5,
+					ball: 16,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-12-09',
+					others: '<span class="outcome">-500</span>（10桶球）',
+					type: 'label'
+				}
+			];
+
+			for (var i = 0; i < items.length; i++) {
+				var ball = items[i];
+				if (ball.type === 'data') {
+					var selector = '.item_' + ball.areaNum + '_' + ball.peopleNum + '_' + ball.ball;
+					var obj = $(selector);
+					obj.attr('count', obj.attr('count') - '0' + 20);
+					var count = obj.attr('count') - 0;
+
+					var r = 255, g = 200, b = 200;
+					g -= count;
+					b -= count;
+					if (g < 0) {
+						g = b = 0;
+						r -= count;
+						if (r <= 0)
+							r = 0;
+					}
+
+					var background_color = 'rgb('+ r + ',' + g + ','+ b +')';
+					obj.css({'background-color': background_color});
+				}
+			}
 		})
 	</script>
 </body>
