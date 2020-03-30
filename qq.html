@@ -104,21 +104,21 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-5 control-label">场地:</label>
 					<div class="col-sm-6 input-group">
-						<input id="inputEmail3" type="text" class="form-control" value="22.5" />
+						<input id="inputEmail3" type="text" class="form-control" />
 						<span class="input-group-addon">/ 小时</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-5 control-label">球:</label>
 					<div class="col-sm-6 input-group">
-						<input id="inputPassword3" type="text" class="form-control" value="50" />
+						<input id="inputPassword3" type="text" class="form-control" />
 						<span class="input-group-addon">/ 桶</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="total_hours" class="col-sm-5 control-label">时长:</label>
 					<div class="col-sm-6 input-group">
-						<input id="total_hours" type="text" class="form-control" value="2.5" />
+						<input id="total_hours" type="text" class="form-control" />
 						<span class="input-group-addon">小时</span>
 					</div>
 				</div>
@@ -144,11 +144,14 @@
 	<script>
 		$(function () {
 
+			var init_perHour = 30;
+			var init_ball = 50;
+			var init_hours = 2.5;
+
 			var array = [2, 3, 4, 4];
-			var per_bool = 50;
-			var per_hour = 22.5;
-			var hours = 2.5;
-			init();
+			var per_bool = init_ball;
+			var per_hour = init_perHour;
+			var hours = init_hours;
 
 			$('#init_btn').click(function () {
 				per_hour = $('#inputEmail3').val();
@@ -156,23 +159,23 @@
 				hours = $('#total_hours').val();
 
 				if (per_hour === '') {
-					per_hour = 22.5;
-					$('#inputEmail3').val('20.1');
+					per_hour = init_perHour;
+					$('#inputEmail3').val(init_perHour);
 				}
 
 				if (per_bool === '') {
-					per_bool = 50;
-					$('#inputPassword3').val('50');
+					per_bool = init_ball;
+					$('#inputPassword3').val(init_ball);
 				}
 
 				if (hours === '') {
-					hours = 2.5;
-					$('#total_hours').val('2.5');
+					hours = init_hours;
+					$('#total_hours').val(init_hours);
 				}
 
 				init();
+				signed();
 			});
-
 
 			function init() {
 				$('.main-content').html('');
@@ -221,171 +224,52 @@
 			
 			var items = [
 				{
-					date: '2020-12-09',
-					others: '<span class="outcome">-500</span>（10桶球）',
+					date: '2020-03-30',
+					others: '<span class="small_text">零钱339 + 卡余(待查)</span>',
 					type: 'label'
 				},
 				{
-					date: '2020-12-09',
+					date: '2020-03-30',
 					peopleNum: 13,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
+					names: '蓝，冷，扣，暖，劫，罗满，初顺，勇，保，杨<p>月芽儿，灵犀，灵犀+1</p>',
+					income: 54,
 					areaNum: 2,		// 开场数
-					area: 112.5,	// 场地总费用
-					ball: 16,
-					others: '<span class="small_text">2*2.5h + 1*2.0</span>',
+					area: 150,		// 场地总费用
+					ball: 22,
+					others: '<span class="outcome">-150</span> <span class="small_text">购球3桶</span>',
 					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 18,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 3,
-					area: 112.5,
-					ball: 25,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 7,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 1,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 13,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 14,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 12,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 12,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 12,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 11,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 11,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 11,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					peopleNum: 11,
-					names: '发，刘，美，给，动手，附带，<em>撒旦</em>,<p>a,b,c,d,e,f,g,h,i</p>',
-					income: 58,
-					areaNum: 2,
-					area: 112.5,
-					ball: 16,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-12-09',
-					others: '<span class="outcome">-500</span>（10桶球）',
-					type: 'label'
 				}
 			];
 
-			for (var i = 0; i < items.length; i++) {
-				var ball = items[i];
-				if (ball.type === 'data') {
-					var selector = '.item_' + ball.areaNum + '_' + ball.peopleNum + '_' + ball.ball;
-					var obj = $(selector);
-					obj.attr('count', obj.attr('count') - '0' + 20);
-					var count = obj.attr('count') - 0;
+			
+			function signed() {
+				for (var i = 0; i < items.length; i++) {
+					var ball = items[i];
+					if (ball.type === 'data') {
+						var selector = '.item_' + ball.areaNum + '_' + ball.peopleNum + '_' + ball.ball;
+						var obj = $(selector);
+						obj.attr('count', obj.attr('count') - '0' + 20);
+						var count = obj.attr('count') - 0;
 
-					var r = 255, g = 200, b = 200;
-					g -= count;
-					b -= count;
-					if (g < 0) {
-						g = b = 0;
-						r -= count;
-						if (r <= 0)
-							r = 0;
+						var r = 255, g = 200, b = 200;
+						g -= count;
+						b -= count;
+						if (g < 0) {
+							g = b = 0;
+							r -= count;
+							if (r <= 0)
+								r = 0;
+						}
+
+						var background_color = 'rgb(' + r + ',' + g + ',' + b + ')';
+						obj.css({ 'background-color': background_color });
 					}
-
-					var background_color = 'rgb('+ r + ',' + g + ','+ b +')';
-					obj.css({'background-color': background_color});
 				}
 			}
+
+			
+			init();
+			signed();
 		})
 	</script>
 </body>

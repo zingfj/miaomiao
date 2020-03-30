@@ -98,21 +98,21 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-5 control-label">场地:</label>
 					<div class="col-sm-6 input-group">
-						<input id="inputEmail3" type="text" class="form-control" value="22.5" />
+						<input id="inputEmail3" type="text" class="form-control" />
 						<span class="input-group-addon">/ 小时</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-5 control-label">球:</label>
 					<div class="col-sm-6 input-group">
-						<input id="inputPassword3" type="text" class="form-control" value="50" />
+						<input id="inputPassword3" type="text" class="form-control" />
 						<span class="input-group-addon">/ 桶</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="total_hours" class="col-sm-5 control-label">时长:</label>
 					<div class="col-sm-6 input-group">
-						<input id="total_hours" type="text" class="form-control" value="2.5" />
+						<input id="total_hours" type="text" class="form-control" />
 						<span class="input-group-addon">小时</span>
 					</div>
 				</div>
@@ -138,10 +138,14 @@
 	<script>
 		$(function () {
 
+			var init_perHour = 30;
+			var init_ball = 50;
+			var init_hours = 2.5;
+
 			var array = [2, 3, 4, 4];
-			var per_bool = 50;
-			var per_hour = 22.5;
-			var hours = 2.5;
+			var per_bool = init_ball;
+			var per_hour = init_perHour;
+			var hours = init_hours;
 			init();
 
 			$('#init_btn').click(function () {
@@ -150,18 +154,18 @@
 				hours = $('#total_hours').val();
 
 				if (per_hour === '') {
-					per_hour = 22.5;
-					$('#inputEmail3').val('20.1');
+					per_hour = init_perHour;
+					$('#inputEmail3').val(init_perHour);
 				}
 
 				if (per_bool === '') {
-					per_bool = 50;
-					$('#inputPassword3').val('50');
+					per_bool = init_ball;
+					$('#inputPassword3').val(init_ball);
 				}
 
 				if (hours === '') {
-					hours = 2.5;
-					$('#total_hours').val('2.5');
+					hours = init_hours;
+					$('#total_hours').val(init_hours);
 				}
 
 				init();
