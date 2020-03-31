@@ -51,7 +51,6 @@
 		.small_text{
 			font-size: 14px;
 		}
-
 		.ball_item{
 			display: none;
 		}
@@ -63,12 +62,16 @@
 <body>
 	<div class="box box-info" style="padding:0 20px 0 5px;background:#a8e09d">
 		<div class="box-header with-border">
-			<h3 class="box-title">开场记录</h3><span id="time_span"></span>
+			<h3 class="box-title">群卡开场记录</h3><span id="time_span"></span>
 		</div>
 	</div>
+	<h5>按照往常收费：男18 女15</h5>
+	<h5>开场时间：20:00 - 22:30</h5>
+	<h5>缴费名单：李老师、杨、满、冷、扣、锋、勇、暖、劫、顺、梧局、王艳、蓝、保、武</h5>
+	<hr/>
 	<div class="box">
 		<div class="box-header">
-			<h3 class="box-title">记录</h3>
+			<h3 class="box-title">...</h3>
 
 			<div class="box-tools">
 				<div class="input-group input-group-sm" style="width: 150px;">
@@ -87,7 +90,7 @@
 					<th>日期</th>
 					<th>人数</th>
 					<th>名单</th>
-					<th>收取</th>
+					<th>收支</th>
 					<th class="ball_item">耗球(个)</th>
 					<th>场地</th>
 					<th>卡余</th>
@@ -113,19 +116,47 @@
 			var card_total = 0;
 			var items = [
 				{
-					date: '2020-03-30',
-					others: '<span class="small_text">零钱339 + 卡余(待查)</span>',
-					type: 'label'
+					date: '事件',
+					peopleNum: 0,
+					names: '----',
+					income: 339,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 0,
+					others: '<span class="small_text">零钱转移，卡余待查</span>',
+					type: 'data'
+				},
+				{
+					date: '事件',
+					peopleNum: 0,
+					names: '-----',
+					income: -150,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 0,
+					others: '<span class="small_text">购球3桶</span>',
+					type: 'data'
 				},
 				{
 					date: '2020-03-30',
-					peopleNum: 13,
-					names: '蓝，冷，扣，暖，劫，罗满，初顺，勇，保，杨<p>月芽儿，灵犀，灵犀+1</p>',
-					income: 54,
+					peopleNum: 14,
+					names: '蓝，冷，扣，暖，劫，满，顺，勇，保，杨<p>芽，灵犀+1，凤</p>',
+					income: 63,
 					areaNum: 2,		// 开场数
 					area: 150,		// 场地总费用
 					ball: 22,
-					others: '<span class="outcome">-150</span> <span class="small_text">购球3桶</span>',
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '事件',
+					peopleNum: 0,
+					names: '-----',
+					income: -500,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 0,
+					others: '<span class="small_text">购球10桶，暖预支</span>',
 					type: 'data'
 				}
 			];
@@ -139,15 +170,18 @@
 				if (m.type === 'data') {
 					expend_area += m.area;
 					income_total += m.income;
-					$('.record_table').append('<tr><td>' + m.date + '</td><td>' + m.peopleNum + '</td><td class="names">' + m.names + '</td><td class="income">' + m.income + '</td><td class="ball_item">' + m.ball
+					var in_out = m.income > 0 ? 'income' : 'outcome';
+
+					$('.record_table').append('<tr><td>' + m.date + '</td><td>' + m.peopleNum + '</td><td class="names">' + m.names + '</td><td class="' + in_out + '">' + m.income + '</td><td class="ball_item">' + m.ball
 						+ '</td><td>' + m.area + '</td><td>' + (card_total - expend_area) + '</td><td>' + m.others + '</td></tr>');
 				}
 				else {
 					$('.record_table').append('<tr><td>' + m.date + '</td><td>---</td><td>---</td><td>---</td><td  class="ball_item">---</td><td>---</td><td>' + (card_total - expend_area) + '</td><td>' + m.others + '</td></tr>');
 				}
 			}
-
-			$('.record_table').append('<tr class="total_tr"><th>总计</th><th>-----</th><th>-----</th><th class="income">+' + income_total + '</th><th class="ball_item">-----</th><th>-----</th><th>-----</th><th class="outcome">-1250</th></tr>');
+			
+			var in_out = income_total > 0 ? 'income' : 'outcome';
+			$('.record_table').append('<tr class="total_tr"><th>总计</th><th>-----</th><th>-----</th><th class="' + in_out +'">' + income_total + '</th><th class="ball_item">-----</th><th>-----</th><th>-----</th><th>-----</th></tr>');
 		})
 	</script>
 </body>
