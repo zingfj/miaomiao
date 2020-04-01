@@ -54,9 +54,6 @@
 		.ball_item{
 			display: none;
 		}
-		.total_tr{
-			display: none;
-		}
 	</style>
 </head>
 <body>
@@ -91,7 +88,7 @@
 					<th>人数</th>
 					<th>名单</th>
 					<th>收支</th>
-					<th class="ball_item">耗球(个)</th>
+					<th class="ball_item">耗球</th>
 					<th>场地</th>
 					<th>卡余</th>
 					<th>备注</th>
@@ -113,7 +110,7 @@
 
 	<script>
 		$(function () {
-			var card_total = 0;
+			var card_total = 1375;
 			var items = [
 				{
 					date: '<span class="small_text">0330事件</span>',
@@ -123,7 +120,7 @@
 					areaNum: 0,		// 开场数
 					area: 0,		// 场地总费用
 					ball: 0,
-					others: '<span class="small_text">零钱转移，卡余未知</span>',
+					others: '<span class="small_text">零钱转移</span>',
 					type: 'data'
 				},
 				{
@@ -134,7 +131,7 @@
 					areaNum: 0,		// 开场数
 					area: 0,		// 场地总费用
 					ball: 0,
-					others: '<span class="small_text">球3桶</span>',
+					others: '<span class="small_text">球 3 桶</span>',
 					type: 'data'
 				},
 				{
@@ -152,11 +149,22 @@
 					date: '<span class="small_text">0331事件</span>',
 					peopleNum: 0,
 					names: '-----',
-					income: -250,
+					income: -500,
 					areaNum: 0,		// 开场数
 					area: 0,		// 场地总费用
 					ball: 0,
-					others: '<span class="small_text">球5桶</span>',
+					others: '<span class="small_text">球 10 桶</span>',
+					type: 'data'
+				},
+				{
+					date: '<span class="small_text">2020-04-01</span>',
+					peopleNum: 18,
+					names: '扣，冷，暖，劫，勇，蓝，杨，满<p>瓦，元，老吴，lw兵，天宇，毅，熬，凤，芽，燕</p>',
+					income: 7*18 + 3 * 15,
+					areaNum: 3,		// 开场数
+					area: -210,		// 场地总费用
+					ball: 28,
+					others: '',
 					type: 'data'
 				}
 			];
