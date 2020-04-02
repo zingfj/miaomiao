@@ -169,6 +169,8 @@
 			var expend_area = 0;
 			var income_total = 0;
 			var ball_total = 0;
+			var card_over = 0;
+
 			for (var i = 0; i < items.length; i++) {
 
 				var m = items[i];
@@ -190,13 +192,13 @@
 						+ '</td><td class="' + area_in_out + '">' + m.area + '</td><td>' + (card_total + expend_area) + '</td><td>' + m.others + '</td></tr>');
 				}
 				else {
-					$('.record_table').append('<tr><td>' + m.date + '</td><td>---</td><td>---</td><td>---</td><td  class="ball_item">---</td><td>---</td><td>' + (card_total - expend_area) + '</td><td>' + m.others + '</td></tr>');
+					$('.record_table').append('<tr><td>' + m.date + '</td><td>---</td><td>---</td><td>---</td><td  class="ball_item">---</td><td>---</td><td>' + (card_total + expend_area) + '</td><td>' + m.others + '</td></tr>');
 				}
 			}
 
 			var in_out = income_total > 0 ? 'income' : 'outcome';
 			var ball_in_out = ball_total > 0 ? 'income' : 'outcome';
-			$('.record_table').append('<tr class="total_tr"><th>结算</th><th>-----</th><th>-----</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>-----</th><th>-----</th></tr>');
+			$('.record_table').append('<tr class="total_tr"><th>结算</th><th>-----</th><th>-----</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
 		})
 	</script>
 </body>
