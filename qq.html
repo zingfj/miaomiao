@@ -224,9 +224,26 @@
 			
 			var items = [
 				{
-					date: '2020-03-30',
-					others: '<span class="small_text">零钱339 + 卡余(待查)</span>',
-					type: 'label'
+					date: '<span class="small_text">0330事件</span>',
+					peopleNum: 0,
+					names: '----',
+					income: 339,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 0,
+					others: '<span class="small_text">零钱转移</span>',
+					type: 'data'
+				},
+				{
+					date: '<span class="small_text">0330事件</span>',
+					peopleNum: 0,
+					names: '-----',
+					income: -150,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 0,
+					others: '<span class="small_text">球 3 桶</span>',
+					type: 'data'
 				},
 				{
 					date: '2020-03-30',
@@ -234,9 +251,31 @@
 					names: '蓝，冷，扣，暖，劫，满，顺，勇，保，杨<p>芽，灵犀+1，凤</p>',
 					income: 63,
 					areaNum: 2,		// 开场数
-					area: 150,		// 场地总费用
+					area: -150,		// 场地总费用
 					ball: 22,
-					others: '<span class="outcome">-150</span> <span class="small_text">购球3桶</span>',
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '<span class="small_text">0331事件</span>',
+					peopleNum: 0,
+					names: '-----',
+					income: -500,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 0,
+					others: '<span class="small_text">球 10 桶</span>',
+					type: 'data'
+				},
+				{
+					date: '2020-04-01',
+					peopleNum: 18,
+					names: '扣，冷，暖，劫，勇，蓝，杨，满<p>瓦，元，老吴，lw兵，天宇，毅，熬，凤，芽，燕</p>',
+					income: 7*18 + 3 * 15,
+					areaNum: 3,		// 开场数
+					area: -210,		// 场地总费用
+					ball: 28,
+					others: '',
 					type: 'data'
 				}
 			];
@@ -245,7 +284,7 @@
 			function signed() {
 				for (var i = 0; i < items.length; i++) {
 					var ball = items[i];
-					if (ball.type === 'data') {
+					if (ball.type === 'data' && ball.peopleNum > 0) {
 						var selector = '.item_' + ball.areaNum + '_' + ball.peopleNum + '_' + ball.ball;
 						var obj = $(selector);
 						obj.attr('count', obj.attr('count') - '0' + 20);
