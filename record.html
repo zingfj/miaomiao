@@ -178,7 +178,7 @@
 				{
 					date: '2020-04-06',
 					peopleNum: 19,
-					names: '保，勇，满，扣，蓝，冷，劫<p>凤，丽，静，芽，大条，毅，鑫，河，吹，锅，兵，龙飞(5)</p>',
+					names: '保，勇，满，扣，蓝，冷，劫<p>凤，丽，静，芽，大条，毅，鑫，河，吹，锅，兵，<a title="早退" style="cursor:pointer">龙飞</a></p>',
 					income: 15*4 + 18*7 + 5,
 					areaNum: 3,		// 开场数
 					area: -200,		// 场地总费用
@@ -219,7 +219,7 @@
 
 			var in_out = income_total > 0 ? 'income' : 'outcome';
 			var ball_in_out = ball_total > 0 ? 'income' : 'outcome';
-			$('.record_table').append('<tr class="total_tr"><th>结算</th><th>-----</th><th>-----</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
+			$('.record_table').append('<tr class="total_tr"><th>-------------</th><th>-----</th><th>-----------------------------------------------------</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
 		})
 	</script>
 </body>
