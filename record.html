@@ -59,7 +59,7 @@
 			<h3 class="box-title">群卡开场记录</h3><span id="time_span"></span>
 		</div>
 	</div>
-	<h5>名单：李老师、杨、罗满、冷、扣、锋、勇、暖、杀人保、韦初顺、梧局、劫、王艳、老蓝、武</h5>
+	<h5>名单：李老师、杨、罗满、冷、扣、锋、勇、暖、杀人保、韦初顺、梧局、劫、王艳、老蓝、武 ... 其他 ?</h5>
 	<h5>照常：男18 女15</h5>
 	<h5>开场时间：20:00 - 22:30</h5>
 	<hr />
@@ -196,7 +196,18 @@
 					ball: -28,
 					others: '',
 					type: 'data'
-				}
+				},
+				{
+					date: '<span class="small_text">0410事件</span>',
+					peopleNum: 0,
+					names: '-----',
+					income: -50*7,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 12*7,
+					others: '<span class="small_text">球 7 桶</span>',
+					type: 'data'
+				},
 			];
 
 			var expend_area = 0;
@@ -230,7 +241,7 @@
 
 			var in_out = income_total > 0 ? 'income' : 'outcome';
 			var ball_in_out = ball_total > 0 ? 'income' : 'outcome';
-			$('.record_table').append('<tr class="total_tr"><th>-------------</th><th>-----</th><th>-----------------------------------------------------</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
+			$('.record_table').append('<tr class="total_tr"><th>结算</th><th>-----</th><th>-----------------------------------------------------</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
 		})
 	</script>
 </body>
