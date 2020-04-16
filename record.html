@@ -59,9 +59,6 @@
 			<h3 class="box-title">群卡开场记录</h3><span id="time_span"></span>
 		</div>
 	</div>
-	<h5>名单：李老师、杨、罗满、冷、扣、锋、勇、暖、杀人保、韦初顺、梧局、劫、王艳、老蓝、武 ... 其他 ?</h5>
-	<h5>照常：男18 女15</h5>
-	<h5>开场时间：20:00 - 22:30</h5>
 	<hr />
 	<div class="box">
 		<div class="box-header">
@@ -81,7 +78,7 @@
 		<div class="box-body table-responsive no-padding">
 			<table class="table table-hover record_table">
 				<tr>
-					<th>日期</th>
+					<th>标题</th>
 					<th>人数</th>
 					<th>名单</th>
 					<th>收支</th>
@@ -107,105 +104,50 @@
 
 	<script>
 		$(function () {
-			var card_total = 1375;
+			var card_total = 4000;
 			var items = [
 				{
-					date: '<span class="small_text">0330事件</span>',
-					peopleNum: 0,
-					names: '----',
-					income: 339,
-					areaNum: 0,		// 开场数
-					area: 0,		// 场地总费用
-					ball: 0,
-					others: '<span class="small_text">球卡提现，开场三次</span>',
-					type: 'data'
-				},
-				{
-					date: '<span class="small_text">0330事件</span>',
-					peopleNum: 0,
-					names: '-----',
-					income: -150,
-					areaNum: 0,		// 开场数
-					area: 0,		// 场地总费用
-					ball: 36,
-					others: '<span class="small_text">球 3 桶</span>',
-					type: 'data'
-				},
-				{
-					date: '2020-03-30',
-					peopleNum: 14,
-					names: '蓝，冷，扣，暖，劫，满，顺，勇，保，杨<p>芽，灵犀+1，凤</p>',
-					income: 63,
-					areaNum: 2,		// 开场数
-					area: -150,		// 场地总费用
-					ball: -22,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '<span class="small_text">0331事件</span>',
-					peopleNum: 0,
-					names: '-----',
-					income: -500,
-					areaNum: 0,		// 开场数
-					area: 0,		// 场地总费用
-					ball: 120,
-					others: '<span class="small_text">球 10 桶</span>',
-					type: 'data'
-				},
-				{
-					date: '2020-04-01',
+					date: '<span class="small_text">0413 事件</span>',
 					peopleNum: 18,
-					names: '扣，冷，暖，劫，勇，蓝，杨，满<p>瓦，元，老吴，lw兵，天宇，毅，熬，凤，芽，燕</p>',
-					income: 7*18 + 3 * 15,
-					areaNum: 3,		// 开场数
-					area: -210,		// 场地总费用
-					ball: -28,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-04-03',
-					peopleNum: 14,
-					names: '勇，暖，扣，冷，满，顺，劫<p>彦，丽，毅，迪，元，吹，江南</p>',
-					income: 5*18 + 2 * 15,
-					areaNum: 2,		// 开场数
-					area: -150,		// 场地总费用
-					ball: -22,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-04-06',
-					peopleNum: 19,
-					names: '保，勇，满，扣，蓝，冷，劫<p>凤，丽，静，芽，大条，毅，鑫，河，吹，锅，兵，<a title="早退" style="cursor:pointer">龙飞</a></p>',
-					income: 15*4 + 18*7 + 5,
-					areaNum: 3,		// 开场数
-					area: -200,		// 场地总费用
-					ball: -28,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '2020-04-08',
-					peopleNum: 15,
-					names: '扣，峰，顺，保，暖，冷，满，劫<p>鑫，迪，熬，瓦，丽，彦，燕</p>',
-					income: 15*3 + 18*4,
-					areaNum: 3,		// 开场数
-					area: -240,		// 场地总费用
-					ball: -28,
-					others: '',
-					type: 'data'
-				},
-				{
-					date: '<span class="small_text">0410事件</span>',
-					peopleNum: 0,
-					names: '-----',
-					income: -50*7,
+					names: '顺雨扣暖劫锋蓝满勇熬杨丽彦鑫凤武<a title="李老师">福</a>毅',
+					income: 467 + 18*200 - 3000,
 					areaNum: 0,		// 开场数
 					area: 0,		// 场地总费用
-					ball: 12*7,
-					others: '<span class="small_text">球 7 桶</span>',
+					ball: 53,
+					others: '<span class="small_text">会员充值 200 * 18</span><p class="small_text">上期余额467，剩球53</p>',
+					type: 'data'
+				},
+				{
+					date: '<span class="small_text">0413 事件</span>',
+					peopleNum: 0,
+					names: '---------------',
+					income: -6*50,
+					areaNum: 0,		// 开场数
+					area: 0,		// 场地总费用
+					ball: 6*12,
+					others: '<span class="small_text">球 6 桶</span>',
+					type: 'data'
+				},
+				{
+					date: '2020-04-13(一)',
+					peopleNum: 17,
+					names: '锋鑫扣丽毅雨暖满杨劫蓝顺凤<p>瓦燕芽兵</p>',
+					income: 18*4,
+					areaNum: 3,		// 开场数
+					area: -220,		// 场地总费用
+					ball: -35,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-04-15(三)',
+					peopleNum: 18,
+					names: '冷暖鑫熬扣勇彦顺蓝劫杨凤毅福<p>江南，天宇，静，迪</p>',
+					income: 18*4,
+					areaNum: 3,		// 开场数
+					area: -225,		// 场地总费用
+					ball: -29,
+					others: '',
 					type: 'data'
 				},
 			];
