@@ -69,9 +69,12 @@
 			background: red;
 		}
 
-		.box-title {
+		.box-title { 
+			float: left;
+			line-height: 1.55 !important;
 			font-size: 22px !important;
 			font-weight: 600;
+			margin-right: 20px !important;
 		}
 
 		.form-group {
@@ -83,15 +86,27 @@
 			font-size: 20px;
 		}
 
-		#time_span{
+		.time_span{
 			margin-left: 10px;
+		} 
+		.hour_input{
+			width: 110px;
+			float: left;
+		}
+		.hour_input input{
+			font-size: 22px;
+			font-weight: 700;
+		}
+		.hour_btn {
+			margin-left: 10px;
+			margin-right: 10px;
 		}
 	</style>
 </head>
 <body>
 	<div class="box box-info" style="padding:0 20px 0 5px;">
 		<div class="box-header with-border">
-			<h3 class="box-title">CC表</h3><span id="time_span"></span>
+			<h3 class="box-title">CC表</h3><span class="time_span"></span>
 		</div>
 		<form class="form-horizontal">
 			<div class="box-body">
@@ -107,13 +122,6 @@
 					<div class="col-sm-6 input-group">
 						<input id="inputPassword3" type="text" class="form-control" />
 						<span class="input-group-addon">/ 桶</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="total_hours" class="col-sm-5 control-label">时长:</label>
-					<div class="col-sm-6 input-group">
-						<input id="total_hours" type="text" class="form-control" />
-						<span class="input-group-addon">小时</span>
 					</div>
 				</div>
 				<div style="float:left;margin-left:20px;">
@@ -141,6 +149,8 @@
 			var init_perHour = 22.5;
 			var init_ball = 50;
 			var init_hours = 2.5;
+
+			var total_hours_array = [2.5, 5, 7.5, 10];
 
 			var array = [2, 3, 4, 4];
 			var per_bool = init_ball;
@@ -175,12 +185,15 @@
 			function init() {
 				$('.main-content').html('');
 				for (var i = 4; i > 0; i--) {
-					$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 ' + hours + '小时 = ' + (hours * i * per_hour).toFixed(1) + '</h3></div></div>');
+					$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 / ' + (total_hours_array[i-1] * per_hour).toFixed(1) + '</h3><div style="float:left"><div class="input-group hour_input"><input class="hour_input_' + i + ' form-control" /><span class="input-group-addon">小时</span></div><button class="btn btn-info hour_btn hour_btn_' + i + '">确定</button><span class="time_span"></span></div></div>');
 					$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女16(女生数--最多用球)</th></tr></table></div>');
 					for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
-						var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
-						var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
-						var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
+						//var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
+						//var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
+						//var mon_20 = ((20.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
+						var mon_1 = ((i * per_bool + total_hours_array[i-1] * per_hour) / n).toFixed(1);
+						var mon_18 = ((18.0 * n - total_hours_array[i-1] * per_hour) * 12 / per_bool).toFixed(1);
+						var mon_20 = ((20.0 * n - total_hours_array[i-1] * per_hour) * 12 / per_bool).toFixed(1);
 						$('#num' + i).append('<tr class="tr_' + i + "_" + n + '"><td>' + n + '</td><td>' + mon_1 + '元/人</td><td>' + mon_18 + ' 球</td><td class="mix_td" id="m15_' + i + '_' + n + '"></td><td>' + mon_20 + ' 球</td><td class="mix_td" id="m16_' + i + '_' + n + '"></td></tr>');
 
 						var woman_num = Math.floor(n / 2) + 2;
@@ -205,7 +218,10 @@
 					}
 				}
 				var day = new Date();
-				$('#time_span').html(day);
+				$('.time_span').html(day); 
+				for (var hi = 0; hi < 4; hi++) {
+					$('.hour_input_' + (hi + 1)).val(total_hours_array[hi]);
+				}
 			}
 
 			
@@ -215,6 +231,39 @@
 					$(this).removeClass('red');
 				else
 					$(this).addClass('red');
+			}); 
+ 
+			$(document).delegate('.hour_btn_4', 'click', function () {
+				var hour = $('.hour_input_4').val();
+				if (hour === '')
+					hour = 10;
+				total_hours_array[3] = hour;
+				init();
+				signed();
+			});
+			$(document).delegate('.hour_btn_3', 'click', function () {
+				var hour = $('.hour_input_3').val();
+				if (hour === '')
+					hour = 7.5;
+				total_hours_array[2] = hour;
+				init();
+				signed();
+			});
+			$(document).delegate('.hour_btn_2', 'click', function () {
+				var hour = $('.hour_input_2').val();
+				if (hour === '')
+					hour = 5;
+				total_hours_array[1] = hour;
+				init();
+				signed();
+			});
+			$(document).delegate('.hour_btn_1', 'click', function () {
+				var hour = $('.hour_input_1').val();
+				if (hour === '')
+					hour = 2.5;
+				total_hours_array[0] = hour;
+				init();
+				signed();
 			});
 		})
 	</script>
