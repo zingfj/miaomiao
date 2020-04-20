@@ -178,7 +178,7 @@
 				$('.main-content').html('');
 				for (var i = 4; i > 0; i--) {
 					$('.main-content').append('<div class="box" id="box_' + i + '"><div class="box-header"><h3 class="box-title">' + i + '场地 / ' + (total_hours_array[i-1] * per_hour).toFixed(1) + '</h3><div style="float:left"><div class="input-group hour_input"><input class="hour_input_' + i + ' form-control" /><span class="input-group-addon">小时</span></div><button class="btn btn-info hour_btn hour_btn_' + i + '">确定</button><span class="time_span"></span></div></div>');
-					$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女18(女生数--最多用球)</th></tr></table></div>');
+					$('#box_' + i).append('<div class="box-body no-padding"><table class="table table-condensed" id="num' + i + '"><tr><th>人数</th><th>固定' + i + '桶球</th><th class="fix_td">18元/人(最多用球)</th><th>男18女15(女生数--最多用球)</th><th class="fix_td">20元/人(最多用球)</th><th>男20女16(女生数--最多用球)</th></tr></table></div>');
 					for (var n = i * 6 + array[i - 1]; n > i * 6 - 4; n--) {
 						//var mon_1 = ((i * per_bool + i * per_hour * hours) / n).toFixed(1);
 						//var mon_18 = ((18.0 * n - i * per_hour * hours) * 12 / per_bool).toFixed(1);
@@ -201,7 +201,7 @@
 						}
 
 						for (var www = woman_num; www > 0; www--) {
-							var temp = (mon_20 - www * 12 * 2 / per_bool).toFixed(0);
+							var temp = (mon_20 - www * 12 * 4 / per_bool).toFixed(0);
 							var height = temp;
 							if (height < 14)
 								height = 14;
