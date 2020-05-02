@@ -21,6 +21,9 @@
 			padding: 0 10px 0 0px;
 		}
 
+		tr.event{
+			background: #e4f5e7;
+		}
 
 		th, td{
 			text-align: center;
@@ -47,7 +50,7 @@
 			color: #1dc51a;
 		}
 		.record_table tr:nth-child(2n+1){
-			background: #f4f8fb;
+			background: #fbfbfb;
 		}
 		.names{
 			font-size: 14px;
@@ -83,7 +86,7 @@
 			<table class="table table-hover record_table">
 				<tr>
 					<th>标题</th>
-					<th>人数</th>
+					<th class="item-people">人数</th>
 					<th>名单</th>
 					<th>收支</th>
 					<th class="ball_item">球</th>
@@ -119,7 +122,7 @@
 					area: 0,		// 场地总费用
 					ball: 53,
 					others: '<span class="small_text">会员充值 200 * 18</span><p class="small_text">上期余额467，剩球53</p>',
-					type: 'data'
+					type: 'event'
 				},
 				{
 					date: '<span class="small_text">0413 事件</span>',
@@ -130,7 +133,7 @@
 					area: 0,		// 场地总费用
 					ball: 6*12,
 					others: '<span class="small_text">球 6 桶</span>',
-					type: 'data'
+					type: 'event'
 				},
 				{
 					date: '2020-04-13(一)',
@@ -163,7 +166,7 @@
 					area: 0,		// 场地总费用
 					ball: 8*12,
 					others: '<a class="small_text" title="聚红3*50，中级星5*55">球 8 桶</a>',
-					type: 'data'
+					type: 'event'
 				},
 				{
 					date: '2020-04-17 交流赛(1)',
@@ -246,11 +249,22 @@
 					date: '<span class="small_text">0501 事件</span>',
 					peopleNum: 0,
 					names: '---------------',
-					income: -13*55,
+					income: -11*55,
 					areaNum: 0,
 					area: 0,
-					ball: 13*12,
-					others: '<span class="small_text">球 13 桶</span>',
+					ball: 11*12,
+					others: '<span class="small_text">球 11 桶</span>',
+					type: 'event'
+				},
+				{
+					date: '2020-05-01(五)',
+					peopleNum: 20,
+					names: '顺扣暖彦鑫丽毅满锋杨劫勇<p>静迪宇吹瓦鑫+1卢毅+1</p>',
+					income: 16+20*7,
+					areaNum: 3,		// 开场数
+					area: -210,		// 场地总费用
+					ball: -22,
+					others: '',
 					type: 'data'
 				},
 			];
@@ -263,30 +277,25 @@
 
 				var m = items[i];
 
-				if (m.type === 'data') {
-					expend_area += m.area;
-					income_total += m.income;
-					ball_total += m.ball;
+				expend_area += m.area;
+				income_total += m.income;
+				ball_total += m.ball;
 
-					var in_out = m.income > 0 ? 'income' : 'outcome';
-					var area_in_out = m.area >= 0 ? 'none' : 'outcome';
-					var ball_in_out = 'none';
-					if (m.ball < 0)
-						ball_in_out = 'outcome';
-					else if (m.ball > 0)
-						ball_in_out = 'income';
+				var in_out = m.income > 0 ? 'income' : 'outcome';
+				var area_in_out = m.area >= 0 ? 'none' : 'outcome';
+				var ball_in_out = 'none';
+				if (m.ball < 0)
+					ball_in_out = 'outcome';
+				else if (m.ball > 0)
+					ball_in_out = 'income';
 
-					$('.record_table').append('<tr><td class="item-title">' + m.date + '</td><td>' + m.peopleNum + '</td><td class="names">' + m.names + '</td><td class="' + in_out + '">' + m.income + '</td><td class="ball_item ' + ball_in_out + '">' + m.ball
-						+ '</td><td class="' + area_in_out + '">' + m.area + '</td><td>' + (card_total + expend_area) + '</td><td>' + m.others + '</td></tr>');
-				}
-				else {
-					$('.record_table').append('<tr><td class="item-title">' + m.date + '</td><td>---</td><td>---</td><td>---</td><td  class="ball_item">---</td><td>---</td><td>' + (card_total + expend_area) + '</td><td>' + m.others + '</td></tr>');
-				}
+				$('.record_table').append('<tr class="' + m.type + '"><td class="item-title">' + m.date + '</td><td class="item-people">' + m.peopleNum + '</td><td class="names">' + m.names + '</td><td class="' + in_out + '">' + m.income + '</td><td class="ball_item ' + ball_in_out + '">' + m.ball
+					+ '</td><td class="' + area_in_out + '">' + m.area + '</td><td>' + (card_total + expend_area) + '</td><td>' + m.others + '</td></tr>');
 			}
 
 			var in_out = income_total > 0 ? 'income' : 'outcome';
 			var ball_in_out = ball_total > 0 ? 'income' : 'outcome';
-			$('.record_table').append('<tr class="total_tr"><th>结算</th><th>-----</th><th>-----------------------------------------------------</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
+			$('.record_table').append('<tr class="total_tr"><th>结算</th><th class="item-people">-----</th><th>-----------------------------------------------------</th><th class="' + in_out + '">' + income_total + '</th><th class="ball_item ' + ball_in_out +'">' + ball_total + '</th><th>-----</th><th>' + (card_total + expend_area) + '</th><th>-----</th></tr>');
 		})
 	</script>
 </body>
