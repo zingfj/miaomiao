@@ -22,7 +22,7 @@
 		}
 
 		tr.event{
-			background: #e4f5e7;
+			background: #e4f5e7 !important;
 		}
 
 		th, td{
@@ -35,10 +35,6 @@
 			border-bottom: 1px solid #333;
 			width: 60px;
 			margin: 0 auto;
-		}
-
-		.item-title{
-			text-align: left;
 		}
 
 		.outcome{
@@ -57,6 +53,9 @@
 		}
 		.small_text{
 			font-size: 14px;
+		}
+		.ball_item{
+			display: table-cell;
 		}
 	</style>
 </head>
@@ -116,7 +115,7 @@
 				{
 					date: '<span class="small_text">0413 事件</span>',
 					peopleNum: 18,
-					names: '顺雨扣暖劫锋蓝满勇熬杨丽彦鑫凤武<a title="李老师">福</a>毅',
+					names: '顺冷扣暖劫锋蓝满勇熬杨丽彦鑫凤武<a title="李老师">福</a>毅',
 					income: 467 + 18*200 - 3000,
 					areaNum: 0,		// 开场数
 					area: 0,		// 场地总费用
@@ -138,7 +137,7 @@
 				{
 					date: '2020-04-13(一)',
 					peopleNum: 17,
-					names: '锋鑫扣丽毅雨暖满杨劫蓝顺凤<p>瓦燕芽兵</p>',
+					names: '锋鑫扣丽毅冷暖满杨劫蓝顺凤<p>瓦燕芽兵</p>',
 					income: 18*4,
 					areaNum: 3,		// 开场数
 					area: -220,		// 场地总费用
@@ -237,7 +236,7 @@
 				{
 					date: '2020-04-29(三)',
 					peopleNum: 20,
-					names: '扣冷彦劫鑫+1丽毅顺凤锋杨福<p>静,迪,庆,杨总+1,卢,元</p>',
+					names: '扣冷彦劫迪鑫+1丽静庆毅福<p>顺凤锋杨杨总+1卢元</p>',
 					income: 16+20+20+20+16+20+20+20,
 					areaNum: 3,		// 开场数
 					area: -235,		// 场地总费用
@@ -259,7 +258,7 @@
 				{
 					date: '2020-05-01(五)',
 					peopleNum: 20,
-					names: '顺扣暖彦鑫丽毅满锋杨劫勇<p>静迪宇吹瓦鑫+1卢毅+1</p>',
+					names: '顺扣暖彦迪宇吹鑫丽杨劫勇<p>静毅满锋瓦鑫+1卢毅+1</p>',
 					income: 16+20*7,
 					areaNum: 3,		// 开场数
 					area: -210,		// 场地总费用
@@ -281,11 +280,121 @@
 				{
 					date: '2020-05-06(三)',
 					peopleNum: 20,
-					names: '暖鑫锋凤杨顺丽毅满冷劫<p>保迪鑫+1卢宇瓦静燕王</p>',
+					names: '暖鑫锋瓦静燕凤满冷劫<p>保迪鑫+1卢宇杨顺丽毅王</p>',
 					income: 20*6+3*16,
 					areaNum: 3,		// 开场数
 					area: -210,		// 场地总费用
-					ball: -30,
+					ball: -24,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-05-08(五)',
+					peopleNum: 21,
+					names: '暖鑫冷扣毅凤勇劫燕静武峰满<p><a title="18，不知本人原因?">瓦</a>福杨宇鑫+1罗文,<a title="15,15">元,庆</a></p>',
+					income: 2*16+18+3*20+15+15,
+					areaNum: 3,		// 开场数
+					area: -210,		// 场地总费用
+					ball: -23,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-05-11(一)',
+					peopleNum: 13,
+					names: '暖鑫劫冷丽毅杨凤<p><a title="12">芽</a>扣武勇鑫+1风兄</p>',
+					income: 12+20+20,
+					areaNum: 2,		// 开场数
+					area: -150,		// 场地总费用
+					ball: -19,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '<span class="small_text">0513 事件</span>',
+					peopleNum: 0,
+					names: '---------------',
+					income: -10*56,
+					areaNum: 0,
+					area: 0,
+					ball: 10*12,
+					others: '<span class="small_text">球 10 桶</span>',
+					type: 'event'
+				},
+				{
+					date: '2020-05-13(三)',
+					peopleNum: 24,
+					names: '暖冷鑫鑫1鑫2武峰宇迪丽凤杨顺<p>元庆劫福毅扣杨总杨总+1罗文瓦<a title="10">芽</a></p>',
+					income: 186,
+					areaNum: 4,		// 开场数
+					area: -285,		// 场地总费用
+					ball: -32,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-05-15(五)',
+					peopleNum: 28,
+					names: '暖满勇丽江鑫+1王静卢凤迪松杨彦<p>吹曼猛+1猛瓦顺武鑫劫锋冷扣毅宇</p>',
+					income: 244 - 25,
+					areaNum: 4,		// 开场数
+					area: -325,		// 场地总费用
+					ball: -35,
+					others: '<span class="small_text" title="减 25 西瓜">|||||</span>',
+					type: 'data'
+				},
+				{
+					date: '2020-05-18(一)',
+					peopleNum: 14,
+					names: '劫锋芽扣冷勇庆熬元，风兄毅凤顺，求知',
+					income: 96,
+					areaNum: 2,		// 开场数
+					area: -170,		// 场地总费用
+					ball: -23,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '2020-05-20(三)',
+					peopleNum: 0,
+					names: '冷扣熬勇.....未参与',
+					income: 80,
+					areaNum: 2,		// 开场数
+					area: -120,		// 场地总费用
+					ball: -16,
+					others: '<span class="small_text" title="未参与 人数具体未知">|||||</span>',
+					type: 'data'
+				},
+				{
+					date: '2020-05-22(五)',
+					peopleNum: 20,
+					names: '鑫暖丽吹凤冷迪扣静彦<a title="12">芽</a>宇勇熬顺卢毅丽+1曼劫',
+					income: 144,
+					areaNum: 3,		// 开场数
+					area: -255,		// 场地总费用
+					ball: -22,
+					others: '',
+					type: 'data'
+				},
+				{
+					date: '<span class="small_text">0525 事件</span>',
+					peopleNum: 0,
+					names: '---------------',
+					income: -10*56,
+					areaNum: 0,
+					area: 0,
+					ball: 10*12,
+					others: '<span class="small_text">球 10 桶</span>',
+					type: 'event'
+				},
+				{
+					date: '2020-05-25(一)',
+					peopleNum: 22,
+					names: '劫卢顺<a title="2男1女">鑫+3</a>瓦燕冷扣毅<a title="12">芽</a>杨福凤武<a title="18">茂</a>彦勇',
+					income: 66,		
+					areaNum: 3,		// 开场数
+					area: -240,		// 场地总费用
+					ball: -22,
 					others: '',
 					type: 'data'
 				},
